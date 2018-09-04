@@ -9,6 +9,8 @@ public class App {
        Scanner keyin= new Scanner(System.in);
        
        //2) 사용자로부터 회원 정보 입력 받기
+       
+       while (true) {
        System.out.print("이름?");
        String name = keyin.nextLine();//nextLine 줄단위로 입력받아라 
        //블럭킹 ? 입력받을때까지 기다렸다가 리턴
@@ -20,5 +22,13 @@ public class App {
        String password = keyin.nextLine();
        
        System.out.printf("%s ,%s, %s\n",name,email,password);
-    }
+       
+       System.out.print("계속하시겠습니까?(y/n)");
+       String answer = keyin.nextLine();
+       if(answer.toLowerCase().equals("n"))//toLower 메소드 호출후 retrun 값으로 eqpuals
+       break;
+       
+       
+       } 
+       }
 }
