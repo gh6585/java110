@@ -30,11 +30,35 @@ public class App { //클래스 변수 main 에서하면 메서드변수 클래�
         }
 
     }
-
+    static class Student extends Member{
+        protected String school;
+        protected boolean working;//bollean  은 get,set 이 is로됨
+        protected String tel; 
+        
+        public String getSchool() {
+            return school;
+        }
+        public void setSchool(String school) {
+            this.school = school;
+        }
+        public boolean isWorking() {
+            return working;
+        }
+        public void setWorking(boolean working) {
+            this.working = working;
+        }
+        public String getTel() {
+            return tel;
+        }
+        public void setTel(String tel) {
+            this.tel = tel;
+        }
+        
+    }
     
 
 
-    static Member[] members =new Member[100];
+    static Student[] students =new Student[100];
 
     static int index =0;
 
@@ -62,9 +86,9 @@ public class App { //클래스 변수 main 에서하면 메서드변수 클래�
             System.out.println("학생 관리> ");
             String command =keyin.nextLine();
             if(command.equals("list")) {
-                printMembers();
+                printStudents();
             }else if(command.equals("add")) {
-                inputMembers();
+                inputStudents();
             }else if (command.equals("quit")){
                 break;
             }else {
@@ -98,17 +122,25 @@ public class App { //클래스 변수 main 에서하면 메서드변수 클래�
         }
     }
 
-    static void printMembers() {
-        for(int i=0; i< index;i++) {
-            System.out.printf("%s ,%s, %s\n"
-                    ,members[i].getName(),members[i].getEmail(),members[i].getPassword());
+    static void printStudents() {
+        int count =0;
+        for(Student s : students) {
+            if(count++ == index)
+                break;
+            System.out.printf("%s ,%s,%s,%s,%b,%s\n"
+                    ,s.getName()
+                    ,s.getEmail()
+                    ,s.getPassword()
+                    ,s.getSchool()
+                    ,s.isWorking()
+                    ,s.getTel());
         }
 
     }
-    static void inputMembers() {
+    static void inputStudents() {
         //2) 사용자로부터 회원 정보 입력 받기
         while (true) {
-            Member m = new Member();
+            Student m = new Student();
             System.out.print("이름?");
             m.setName(keyin.nextLine());//nextLine 줄단위로 입력받아라 
             //블럭킹 ? 입력받을때까지 기다렸다가 리턴
@@ -118,8 +150,17 @@ public class App { //클래스 변수 main 에서하면 메서드변수 클래�
 
             System.out.print("암호?");
             m.setPassword(keyin.nextLine());
+            
+            System.out.println("최종학력");
+            m.setSchool(keyin.nextLine());
+            
+            System.out.println("재직여부?(ture/false)");
+            m.setWorking(Boolean.parseBoolean(keyin.nextLine()));
+            
+            System.out.println("전화?");
+            m.setTel(keyin.nextLine());
 
-            members[index++] = m;
+            students[index++] = m;
 
             //index++;
 
