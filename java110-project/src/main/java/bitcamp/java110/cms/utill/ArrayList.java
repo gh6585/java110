@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.utill;
 
-public class ArrayList<T> {
+public class ArrayList<T> implements List<T> {
     //개별적으로 관리해야 할 값이라면 인스턴스 변수를  사용하라!
     private Object[] list = new Object[5];
     private int index = 0;
@@ -20,15 +20,20 @@ public class ArrayList<T> {
         list = newList;
     }
     
-    public  void remove(int no) {
+    public  T remove(int no) {
         if (no < 0 || no >= index) {
-            return;
+            return null;
         }
+        
+        @SuppressWarnings("unchecked")
+        T removedObj = (T)list[no];
         
         for (int i = no; i < index - 1; i++) {
             list[i] = list[i + 1];
         }
         index--;
+        
+        return removedObj;
     }
     
     public  int size() {

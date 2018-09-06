@@ -3,18 +3,20 @@ package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.domain.Student;
-import bitcamp.java110.cms.utill.LinkedList;
+import bitcamp.java110.cms.utill.List;
 
 public class StudentController {
+
+    private List<Student> students;
+    public Scanner keyIn;
     
-    private  LinkedList<Student> students = new LinkedList<>();
-    public  Scanner keyIn;
-    
-    public StudentController(Scanner keyIn) {
-        this.keyIn=keyIn;
+    public StudentController(Scanner keyIn, List<Student> students) {
+        this.keyIn = keyIn;
+        this.students = students;
+        init();
     }
     
-    public  void serviceStudentMenu() {
+    public void serviceStudentMenu() {
         while (true) {
             System.out.print("학생 관리> ");
             String command = keyIn.nextLine();
@@ -34,7 +36,7 @@ public class StudentController {
         }
     }
     
-    private  void printStudents() {
+    private void printStudents() {
         for (int i = 0; i < students.size(); i++) {
             Student s = students.get(i);
             System.out.printf("%d: %s, %s, %s, %s, %b, %s\n",
@@ -48,7 +50,7 @@ public class StudentController {
         }
     }
     
-    private  void inputStudents() {
+    private void inputStudents() {
         while (true) {
             Student m = new Student();
             
@@ -79,7 +81,7 @@ public class StudentController {
         }
     }
 
-    private  void deleteStudent() {
+    private void deleteStudent() {
         System.out.print("삭제할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
         
@@ -93,7 +95,7 @@ public class StudentController {
         System.out.println("삭제하였습니다.");
     }
     
-    private  void detailStudent() {
+    private void detailStudent() {
         System.out.print("조회할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
         
@@ -112,7 +114,7 @@ public class StudentController {
         System.out.printf("재직여부: %b\n", student.isWorking());
     }
     
-     {//인스턴스 블록
+    private void init() {
         Student s = new Student();
         s.setName("a");
         students.add(s);
