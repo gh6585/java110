@@ -6,15 +6,15 @@ import bitcamp.java110.cms.domain.Teacher;
 import bitcamp.java110.cms.utill.ArrayList;
 
 public class TeacherController {
-   
-    private  ArrayList teachers=new ArrayList();
-    public  Scanner keyIn;
     
-    public TeacherController(Scanner keyin) {
-        this.keyIn=keyIn;
+    private ArrayList<Teacher> teachers = new ArrayList<>();
+    public Scanner keyIn;
+    
+    public TeacherController(Scanner keyIn) {
+        this.keyIn = keyIn;
     }
     
-    public  void serviceTeacherMenu() {
+    public void serviceTeacherMenu() {
         while (true) {
             System.out.print("강사 관리> ");
             String command = keyIn.nextLine();
@@ -34,21 +34,21 @@ public class TeacherController {
         }
     }
     
-    private  void printTeachers() {
+    private void printTeachers() {
         for (int i = 0; i < teachers.size(); i++) {
-            Teacher s = (Teacher)teachers.get(i);
-            System.out.printf("%d: %s, %s, %s, %s, %s, %s\n",
+            Teacher s = teachers.get(i);
+            System.out.printf("%d: %s, %s, %s, %s, %d, [%s]\n",
                     i,
                     s.getName(), 
                     s.getEmail(), 
                     s.getPassword(), 
-                    s.getPay(),
                     s.getTel(),
+                    s.getPay(),
                     s.getSubjects());
         }
     }
     
-    private  void inputTeachers() {
+    private void inputTeachers() {
         while (true) {
             Teacher m = new Teacher();
             
@@ -79,9 +79,7 @@ public class TeacherController {
         }
     }
     
-    
-    
-    private  void deleteTeacher() {
+    private void deleteTeacher() {
         System.out.print("삭제할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
         
@@ -95,7 +93,7 @@ public class TeacherController {
         System.out.println("삭제하였습니다.");
     }
     
-    private  void detailTeacher() {
+    private void detailTeacher() {
         System.out.print("조회할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
         
@@ -104,34 +102,13 @@ public class TeacherController {
             return;
         }
         
- Teacher teacher = (Teacher)teachers.get(no);
+        Teacher t = teachers.get(no);
         
-        System.out.printf("이름: %s\n", teacher.getName());
-        System.out.printf("이메일: %s\n", teacher.getEmail());
-        System.out.printf("암호: %s\n", teacher.getPassword());
-        System.out.printf("돈: %s\n", teacher.getPay());
-        System.out.printf("전화: %s\n", teacher.getTel());
-        System.out.printf("강의과목: %b\n", teacher.getSubjects());
-    }
-     {
-        Teacher s = new Teacher();
-        s.setName("a");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setName("b");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setName("c");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setName("d");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setName("e");
-        teachers.add(s);
+        System.out.printf("이름: %s\n", t.getName());
+        System.out.printf("이메일: %s\n", t.getEmail());
+        System.out.printf("암호: %s\n", t.getPassword());
+        System.out.printf("전화: %s\n", t.getTel());
+        System.out.printf("시급: %d\n", t.getPay());
+        System.out.printf("강의과목: %s\n", t.getSubjects());
     }
 }
