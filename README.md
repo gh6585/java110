@@ -1,9 +1,20 @@
 # java110
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v1.4)
+-리플렉션 API활용
+-미니 IOC 컨테이터 작성
 
-## java110-project (tag: v0.1.1)
+## java110-project (tag: v1.3)
+-인터페이스 활용
+
+
+## java110-project (tag: v1.2)
+자바 컬렉션 API 사용
+-직접 제작한 List,ArrayList.LinkedList  대신에 자바에서 제공하는 Collection API 를 사용한다
+
+## java110-project (tag: v1.1)
 -의존 객체 주입(Dependency Injection; DI) 적용
-## java110-project (tag: v0.10)
+## java110-project (tag: v1.0)
 -LinkedList 구동 원리 및 적용
 
 ## java110-project (tag: v0.9)
