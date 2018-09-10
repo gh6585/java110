@@ -11,7 +11,7 @@ import bitcamp.java110.cms.domain.Student;
 public class StudentDetailController {
 
     @RequestMapping("student/detail")
-    private void detailStudent(Scanner keyIn) {
+    public void detail(Scanner keyIn) {
         System.out.print("조회할 번호? ");
         int no = Integer.parseInt(keyIn.nextLine());
         
