@@ -1,10 +1,15 @@
+package bitcamp.java110.cms;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110.cms.domain.Student;
 
 public class App {
+    
+    public static ArrayList<Student> students = new ArrayList<>();
     
     static Scanner keyIn = new Scanner(System.in);
 
@@ -17,14 +22,13 @@ public class App {
                 new RequestMappingHandlerMapping();
         
         // => IoC 컨테이너에 보관된 객체의 이름 목록을 가져온다.
-        String[] names= iocContainer.getBeanDefinitionNames();
-        for(String name: names) {
-            //=>이름으로 객체를  꺼낸다.
+        String[] names = iocContainer.getBeanDefinitionNames();
+        for (String name : names) {
+            // => 이름으로 객체를 꺼낸다.
             Object obj = iocContainer.getBean(name);
             
-            //=> 객체에서 @RequestMapping이 붙은 메서드를 찾아 저장한다.
+            // => 객체에서 @RequestMapping이 붙은 메서드를 찾아 저장한다.
             requestHandlerMap.addMapping(obj);
-            
         }
         
         while (true) {
@@ -40,7 +44,7 @@ public class App {
                 continue;
             }
             
-           mapping.getMethod().invoke(mapping.getInstance(), keyIn);
+            mapping.getMethod().invoke(mapping.getInstance(), keyIn);
         }
         
         keyIn.close();
