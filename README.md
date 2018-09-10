@@ -1,5 +1,10 @@
 # java110
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v1.5)
+-리플렉션 API 활용II
+-에노테이션 활용
+-미니 IoC 컨테이너 개선
+
 ## java110-project (tag: v1.4)
 -리플렉션 API활용
 -미니 IOC 컨테이터 작성
