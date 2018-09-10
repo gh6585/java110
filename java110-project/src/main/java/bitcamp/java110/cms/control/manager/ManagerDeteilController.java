@@ -11,21 +11,20 @@ public class ManagerDeteilController {
 
     @RequestMapping("manager/detail")
     public void detail(Scanner keyIn) {
-        System.out.print("조회할 번호? ");
-        int no = Integer.parseInt(keyIn.nextLine());
+        System.out.println("조회할 매니저의 이메일?");
+        String email = keyIn.nextLine();
+        Manager manager = App.managersDao.findByEmail(email);
         
-        if (no < 0 || no >= App.managers.size()) {
-            System.out.println("무효한 번호입니다.");
+        if(manager == null) {
+            System.out.println("해당 이메일의 메니저가 없습니다!");
             return;
         }
-        
-        Manager m = App.managers.get(no);
-        
-        System.out.printf("이름: %s\n", m.getName());
-        System.out.printf("이메일: %s\n", m.getEmail());
-        System.out.printf("암호: %s\n", m.getPassword());
-        System.out.printf("직위: %s\n", m.getPosition());
-        System.out.printf("전화: %s\n", m.getTel());
+            
+        System.out.printf("이름: %s\n", manager.getName());
+        System.out.printf("이메일: %s\n", manager.getEmail());
+        System.out.printf("암호: %s\n", manager.getPassword());
+        System.out.printf("직위: %s\n", manager.getPosition());
+        System.out.printf("전화: %s\n", manager.getTel());
     }
 
 }
