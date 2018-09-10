@@ -2,7 +2,6 @@ package bitcamp.java110.cms.context;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import org.apache.ibatis.io.Resources;
@@ -11,10 +10,10 @@ import bitcamp.java110.cms.annotation.Component;
 
 
 
-public class ApplicationContest {
+public class ApplicationContext {
     HashMap<String,Object>objpool =new HashMap<>();
 
-    public ApplicationContest(String packgeName) throws Exception {
+    public ApplicationContext(String packgeName) throws Exception {
         //패키지 이름을 파일 경로로 바꾼다
         String path = packgeName.replace(".","/");
 
