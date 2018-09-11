@@ -4,22 +4,16 @@ import java.util.Scanner;
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
-import bitcamp.java110.cms.dao.ManagerDao;
-import bitcamp.java110.cms.dao.StudentDao;
-import bitcamp.java110.cms.dao.TeacherDao;
 
 public class App {
     
-    public static StudentDao studentDao = new StudentDao();
-    public static TeacherDao teachersDao = new TeacherDao();
-    public static ManagerDao managersDao = new ManagerDao();
     
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
         
         ApplicationContext iocContainer = 
-                new ApplicationContext("bitcamp.java110.cms.control");
+                new ApplicationContext("bitcamp.java110.cms");
         
         RequestMappingHandlerMapping requestHandlerMap = 
                 new RequestMappingHandlerMapping();

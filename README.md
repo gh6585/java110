@@ -1,5 +1,19 @@
 # java110
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v1.9)
+-QueryString 적용
+
+## java110-project (tag: v1.8)
+-의존 객체 주입하기
+-미니 IoC컨테이너 개선
+
+## java110-project (tag: v1.7)
+-DAO 도입하기
+
+## java110-project (tag: v1.6)
+-Command 디자인 패턴 적용
+-컨트롤러 구조 변경
+
 ## java110-project (tag: v1.5)
 -리플렉션 API 활용II
 -에노테이션 활용
