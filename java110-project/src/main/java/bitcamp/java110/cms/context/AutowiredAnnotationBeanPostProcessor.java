@@ -4,9 +4,11 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 
 import bitcamp.java110.cms.annotation.Autowired;
+import bitcamp.java110.cms.annotation.Component;
 
+@Component
 public class AutowiredAnnotationBeanPostProcessor 
-implements BeanPostProcessor{
+        implements BeanPostProcessor{
 
 
     ApplicationContext beanContainer;
