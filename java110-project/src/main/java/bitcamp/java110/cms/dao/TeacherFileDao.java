@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotation.Component;
-import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.domain.Teacher;
 @Component
-public class StudentFileDao implements StudentDao {
+public class TeacherFileDao implements TeacherDao {
 
-    private List<Student> list = new ArrayList<>();
+    private List<Teacher> list = new ArrayList<>();
 
-    public StudentFileDao() {
-        File dataFile = new File("data/student.dat");
+    public TeacherFileDao() {
+        File dataFile = new File("data/teacher.dat");
         try (BufferedReader in = new BufferedReader(new FileReader(dataFile))){
 
             while (true) {
@@ -28,15 +28,15 @@ public class StudentFileDao implements StudentDao {
               
                 String [] values = line.split(",");
 
-                Student s = new Student();
-                s.setEmail(values[0]);
-                s.setName(values[1]);
-                s.setPassword(values[2]);
-                s.setSchool(values[3]);
-                s.setSchool(values[4]);
-                s.setWorking(Boolean.parseBoolean(values[5]));
+                Teacher t = new Teacher();
+                t.setEmail(values[0]);
+                t.setName(values[1]);
+                t.setPassword(values[2]);
+                t.setTel(values[3]);
+                t.setSubjects(values[4]);
+                t.setPay(Integer.parseInt(values[5]));
 
-                list.add(s);
+                list.add(t);
 
             }
         }catch(Exception e) {
@@ -44,17 +44,17 @@ public class StudentFileDao implements StudentDao {
         }
     }
     private void save() {
-        File dataFile = new File("data/student.dat");
+        File dataFile = new File("data/teacher.dat");
         try (BufferedWriter out = new BufferedWriter(new FileWriter(dataFile))){
 
-            for(Student s : list) {
-                out.write(String.format("%s,%s,%s,%s,%S,%b\n"
-                        ,s.getEmail()
-                        ,s.getName()
-                        ,s.getPassword()
-                        ,s.getSchool()
-                        ,s.getTel()
-                        ,s.isWorking()));
+            for(Teacher t : list) {
+                out.write(String.format("%s,%s,%s,%s,%s,%d\n"
+                        ,t.getEmail()
+                        ,t.getName()
+                        ,t.getPassword()
+                        ,t.getTel()
+                        ,t.getSubjects()
+                        ,t.getPay()));
             }
             out.flush();
         }catch(Exception e) {
@@ -63,24 +63,24 @@ public class StudentFileDao implements StudentDao {
     }
 
 
-    public int insert(Student studnet) {
-        for (Student item : list) {
-            if(item.getEmail().equals(studnet.getEmail())) {
+    public int insert(Teacher teacher) {
+        for (Teacher item : list) {
+            if(item.getEmail().equals(teacher.getEmail())) {
                 return 0;
             }
         }
-        list.add(studnet);
+        list.add(teacher);
         save();
         return 1;
     }
 
-    public List<Student> findAll() {
+    public List<Teacher> findAll() {
         return list;
 
     }
 
-    public Student findByEmail(String email) {
-        for (Student item : list) {
+    public Teacher findByEmail(String email) {
+        for (Teacher item : list) {
             if(item.getEmail().equals(email)) {
                 return item;
             }
@@ -89,7 +89,7 @@ public class StudentFileDao implements StudentDao {
     }
 
     public int delete(String email) {
-        for (Student item : list) {
+        for (Teacher item : list) {
             if(item.getEmail().equals(email)) {
                 list.remove(item);
                 save();

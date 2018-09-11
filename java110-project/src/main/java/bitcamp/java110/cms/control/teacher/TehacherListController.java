@@ -25,7 +25,7 @@ public class TehacherListController {
         
         for(Teacher t : list) {
         
-        System.out.printf("%s, %s, %s, %s, %d, [%s]\n",
+        System.out.printf("%s, %s, %s, %s, %d, %s\n",
                     t.getName(), 
                     t.getEmail(), 
                     t.getPassword(), 
