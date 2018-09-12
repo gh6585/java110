@@ -1,2 +1,4 @@
-a,a,a,a,A,false
-b,b,b,b,B,false
+a,a,a,NULL,NULL,false
+b,b,b,NULL,NULL,false
+1,1,1,1,NULL,false
+c,c,c,c,C,false

@@ -1,5 +1,7 @@
 package bitcamp.java110.cms.dao.impl;
 
+
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -11,17 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotation.Component;
-import bitcamp.java110.cms.dao.ManagerDao;
-import bitcamp.java110.cms.domain.Manager;
+import bitcamp.java110.cms.dao.TeacherDao;
+import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.domain.Teacher;
 @Component
-public class ManagerFile2Dao implements ManagerDao {
+public class TeacherFile2Dao implements TeacherDao {
 
-    static String defaultFilename="data/manager2.dat";
+    static String defailtFilename="data/teacher2.dat";
     String filename;
-    private List<Manager> list = new ArrayList<>();
+    private List<Teacher> list = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
-    public ManagerFile2Dao(String filename) {
+    public TeacherFile2Dao(String filename) {
         this.filename =filename;
 
         File dataFile = new File(filename);
@@ -30,16 +33,17 @@ public class ManagerFile2Dao implements ManagerDao {
                 BufferedInputStream in1 = new BufferedInputStream(in0);
                 ObjectInputStream in = new ObjectInputStream(in1);
                 ){
-            list = (List<Manager>)in.readObject();
+            list = (List<Teacher>)in.readObject();
         }catch(Exception e) {
             e.printStackTrace();
          
         }
     }
-
-    public ManagerFile2Dao() {
-        this(defaultFilename);
+    public TeacherFile2Dao() {
+        this(defailtFilename);
     }
+
+
     private void save() {
         File dataFile = new File(filename);
         
@@ -53,26 +57,24 @@ public class ManagerFile2Dao implements ManagerDao {
             e.printStackTrace();
         }
     }
-
-
-    public int insert(Manager manager) {
-        for (Manager item : list) {
-            if(item.getEmail().equals(manager.getEmail())) {
+    public int insert(Teacher teacher) {
+        for (Teacher item : list) {
+            if(item.getEmail().equals(teacher.getEmail())) {
                 return 0;
             }
         }
-        list.add(manager);
+        list.add(teacher);
         save();
         return 1;
     }
 
-    public List<Manager> findAll() {
+    public List<Teacher> findAll() {
         return list;
 
     }
 
-    public Manager findByEmail(String email) {
-        for (Manager item : list) {
+    public Teacher findByEmail(String email) {
+        for (Teacher item : list) {
             if(item.getEmail().equals(email)) {
                 return item;
             }
@@ -81,7 +83,7 @@ public class ManagerFile2Dao implements ManagerDao {
     }
 
     public int delete(String email) {
-        for (Manager item : list) {
+        for (Teacher item : list) {
             if(item.getEmail().equals(email)) {
                 list.remove(item);
                 save();
