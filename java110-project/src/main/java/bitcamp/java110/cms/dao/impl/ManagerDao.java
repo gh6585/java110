@@ -1,4 +1,4 @@
-package bitcamp.java110.cms.dao;
+package bitcamp.java110.cms.dao.impl;
 
 
 

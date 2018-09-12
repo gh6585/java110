@@ -5,7 +5,7 @@ import java.util.Scanner;
 import bitcamp.java110.cms.annotation.Autowired;
 import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
-import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.dao.impl.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 @Component
 public class ManagerDeteilController {
