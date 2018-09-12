@@ -1,6 +1,10 @@
 package bitcamp.java110.cms.domain;
 
-public class Member {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Member implements Serializable {
+
     protected String name;
     protected String email;
     protected String password;
