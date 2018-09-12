@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotation.Component;
+import bitcamp.java110.cms.dao.DuplicationDaoException;
+import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.dao.TeacherDao;
+import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.domain.Teacher;
 @Component
@@ -36,7 +39,7 @@ public class TeacherFile2Dao implements TeacherDao {
             list = (List<Teacher>)in.readObject();
         }catch(Exception e) {
             e.printStackTrace();
-         
+
         }
     }
     public TeacherFile2Dao() {
@@ -46,21 +49,30 @@ public class TeacherFile2Dao implements TeacherDao {
 
     private void save() {
         File dataFile = new File(filename);
-        
+
         try (
                 FileOutputStream out0 = new FileOutputStream(dataFile);//콘크리트
                 BufferedOutputStream out1 = new BufferedOutputStream(out0);//데코레이터
                 ObjectOutputStream out = new ObjectOutputStream(out1);//데코레이터
-        ){
+                ){
             out.writeObject(list);
         }catch(Exception e) {
             e.printStackTrace();
         }
     }
-    public int insert(Teacher teacher) {
+    public int insert(Teacher teacher)  throws MandatoryValueDaoException,DuplicationDaoException{
+        if(teacher.getName().length() == 0 ||
+           teacher.getEmail().length() == 0 ||
+           teacher.getPassword().length() == 0 ) {
+
+            //호출자에게 예외 정보를 만들어 던진다.
+            throw new MandatoryValueDaoException(); 
+        }
         for (Teacher item : list) {
             if(item.getEmail().equals(teacher.getEmail())) {
-                return 0;
+
+                // 예외처리 문법이 없던 시절에는 리턴 값으로 예외 상황을 호출자에게 알렸다. 
+                throw new DuplicationDaoException();
             }
         }
         list.add(teacher);

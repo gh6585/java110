@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotation.Component;
+import bitcamp.java110.cms.dao.DuplicationDaoException;
+import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 @Component
@@ -35,7 +37,7 @@ public class StudentFile2Dao implements StudentDao {
             list = (List<Student>)in.readObject();
         }catch(Exception e) {
             e.printStackTrace();
-         
+
         }
     }
     public StudentFile2Dao() {
@@ -43,24 +45,31 @@ public class StudentFile2Dao implements StudentDao {
     }
     private void save() {
         File dataFile = new File(filename);
-        
+
         try (
                 FileOutputStream out0 = new FileOutputStream(dataFile);//콘크리트
                 BufferedOutputStream out1 = new BufferedOutputStream(out0);//데코레이터
                 ObjectOutputStream out = new ObjectOutputStream(out1);//데코레이터
-        ){
+                ){
             out.writeObject(list);
         }catch(Exception e) {
             e.printStackTrace();
         }
     }
-    public int insert(Student studnet) {
+    public int insert(Student student) throws MandatoryValueDaoException,DuplicationDaoException {
+        if(student.getName().length() == 0 ||
+           student.getEmail().length() == 0 ||
+           student.getPassword().length() == 0 ) {
+
+            //호출자에게 예외 정보를 만들어 던진다.
+            throw new MandatoryValueDaoException(); 
+        }
         for (Student item : list) {
-            if(item.getEmail().equals(studnet.getEmail())) {
-                return 0;
+            if(item.getEmail().equals(student.getEmail())) {
+                throw new MandatoryValueDaoException();
             }
         }
-        list.add(studnet);
+        list.add(student);
         save();
         return 1;
     }
