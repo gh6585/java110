@@ -1,5 +1,11 @@
 # java110
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v2.5)
+-Spring IoC 컨테이너 도입
+
+## java110-project (tag: v2.4)
+-DB 커넥션 공유하기
+
 ## java110-project (tag: v2.3)
 -DAO에 JDBC 적용
 
@@ -49,6 +55,7 @@ IoC 컨테이너가 객체 생성 후 수행하는 해야할 작업을 별도의
 
 ## java110-project (tag: v1.1)
 -의존 객체 주입(Dependency Injection; DI) 적용
+
 ## java110-project (tag: v1.0)
 -LinkedList 구동 원리 및 적용
 

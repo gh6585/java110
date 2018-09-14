@@ -1,5 +1,12 @@
 # java110-project
 비트캠프 자바 110기 실습 프로젝트
+## v2.3
+-DAO에 JDBC적용
+-작업
+    -Data Modeling과 forward enhineering 수행
+    -테이블 분비
+    -JDBC API 활용
+    -트랜잭션 다루기
 
 ## v2.2
 -예외처리 적용
