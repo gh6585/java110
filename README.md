@@ -1,5 +1,8 @@
 # java110
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v2.6)
+-Client/Server 구조로 변경
+
 ## java110-project (tag: v2.5)
 -Spring IoC 컨테이너 도입
 

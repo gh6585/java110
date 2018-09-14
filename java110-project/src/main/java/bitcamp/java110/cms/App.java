@@ -1,7 +1,6 @@
 package bitcamp.java110.cms;
 import java.util.Scanner;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
