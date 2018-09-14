@@ -12,14 +12,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import bitcamp.java110.cms.annotation.Component;
 import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.MandatoryValueDaoException;
 import bitcamp.java110.cms.dao.TeacherDao;
-import bitcamp.java110.cms.domain.Manager;
-import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.domain.Teacher;
-@Component
+//@Component
 public class TeacherFile2Dao implements TeacherDao {
 
     static String defailtFilename="data/teacher2.dat";
