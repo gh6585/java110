@@ -1,5 +1,18 @@
 # java110-project
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v2.5)
+-Spring IoC 컨테이너 도입
+-기존에 만들었던 ApplicationContext 대신에 Spring 프레임워크에서 제공하는
+ApplicationContext 사용하기
+-작업
+    -Spring IoC 커테이너 라이브러리 파일 추가(build.gradle 파일 편집)
+    -"Spirng context" 로 mvnrepository.com에서 검색한다.
+    -명ㄹㅇ
+
+## v2.4
+-DB 커넥션 공유하기
+-DB 연결 객체를 재사용하여 가비지를 줄이고, 실해 속도를 높이기 위함
+
 ## v2.3
 -DAO에 JDBC적용
 -작업
