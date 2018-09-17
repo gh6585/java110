@@ -1,8 +1,19 @@
 # java110-project
 비트캠프 자바 110기 실습 프로젝트
+## v2.8(Stateless)
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리))
+- 별도의 스레드를 만들어 클라이언트의 요청을 처리하게 한다.
+- 즉 동시에 여러 클라이언트 요청을 처리한다.
+
+## v2.7(Stateful)
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateful 방식으로 요청 처리))
+- 별도의 스레드를 만들어 클라이언트의 요청을 처리하게 한다.
+- 즉 동시에 여러 클라이언트 요청을 처리한다.
 
 ## v2.6
-
+-Client/Server 구조로 변경
+-소켓 프로그래밍 구현
+-프로토콜 개념 이해
 
 ## v2.5
 Spring IoC 컨테이너 도입

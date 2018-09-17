@@ -1,5 +1,11 @@
 # java110
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v2.8)
+-멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리))
+
+## java110-project (tag: v2.7)
+-멀티스레드 적용하기
+
 ## java110-project (tag: v2.6)
 -Client/Server 구조로 변경
 
