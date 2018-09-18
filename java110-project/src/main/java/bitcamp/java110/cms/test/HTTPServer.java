@@ -25,7 +25,7 @@ public class HTTPServer {
                 }
                 //클라이언트에 응답하기
                 out.println("HTTP/1.1 200 OK");
-                out.println("Content-Length: 6");
+                //out.println("Content-Length: 6");
                 out.println();
                 out.println("Hello!");
             }

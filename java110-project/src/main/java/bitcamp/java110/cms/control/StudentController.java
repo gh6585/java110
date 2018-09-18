@@ -3,14 +3,15 @@ package bitcamp.java110.cms.control;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
-import bitcamp.java110.cms.server.Request;
-import bitcamp.java110.cms.server.Response;
 
 @Component
 public class StudentController {
@@ -23,7 +24,8 @@ public class StudentController {
     }
   
     @RequestMapping("student/add")
-    public void add(Request request, Response response) {
+    public void add(ServletRequest request, ServletResponse response) 
+            throws Exception {
             
         Student s = new Student();
         
@@ -35,11 +37,16 @@ public class StudentController {
         s.setWorking(Boolean.parseBoolean(request.getParameter("working")));
         
         
-        studentDao.insert(s);
-        System.out.println("등록하였습니다.");
+        PrintWriter out = response.getWriter();
+        if (studentDao.insert(s) > 0) {
+            out.println("저장하였습니다.");
+        } else {
+            out.println("같은 이메일의 학생이 존재합니다.");
+        }
     }
     @RequestMapping("student/delete")
-    public void delete(Request request,Response response) {
+    public void delete(ServletRequest request, ServletResponse response) 
+            throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
         
         PrintWriter out = response.getWriter();
@@ -51,7 +58,8 @@ public class StudentController {
         }
     }
     @RequestMapping("student/detail")
-    public void detail(Request request,Response response) {
+    public void detail(ServletRequest request, ServletResponse response) 
+            throws Exception {
         int no = Integer.parseInt(request.getParameter("no"));
         Student s = studentDao.findByNo(no);
         
@@ -69,7 +77,8 @@ public class StudentController {
         out.printf("재직여부: %b\n", s.isWorking());
     }
     @RequestMapping("student/list")
-    public void list(Request request,Response response) {
+    public void list(ServletRequest request, ServletResponse response) 
+            throws Exception {
         PrintWriter out = response.getWriter();
         List<Student> list = studentDao.findAll();
         
