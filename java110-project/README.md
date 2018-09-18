@@ -1,5 +1,13 @@
 # java110-project
 비트캠프 자바 110기 실습 프로젝트
+## java110-project (tag: v2.9)
+-command 패턴으로 분활된 메서드를 한클래스로 합치기
+-관련된 컨트롤러 클래스를 한 클래스로 만든다.
+    - ManagerListController,MangerAddController,MangerDetailController
+    ,ManagerDeleteController 클래스를 ManagerController 클래스로 합친다.
+    -학생 관리와 강사 관리도 합친다.
+    -각각의 컨트롤러가 크지 않으 때는 관리하기 쉽게 한 클래스로 합치기도 한다.
+
 ## v2.8(Stateless)
 - 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리))
 - 별도의 스레드를 만들어 클라이언트의 요청을 처리하게 한다.
