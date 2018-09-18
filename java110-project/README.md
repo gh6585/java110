@@ -1,6 +1,10 @@
 # java110-project
 비트캠프 자바 110기 실습 프로젝트
-## java110-project (tag: v2.9)
+## tag: v3.0
+-웹브라우저를 클라이언트로 사용하기
+-서버에 HTTP 프로토콜을 처리한느 기능 추가
+
+## tag: v2.9
 -command 패턴으로 분활된 메서드를 한클래스로 합치기
 -관련된 컨트롤러 클래스를 한 클래스로 만든다.
     - ManagerListController,MangerAddController,MangerDetailController
