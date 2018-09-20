@@ -12,21 +12,21 @@ import org.springframework.stereotype.Component;
 import bitcamp.java110.cms.dao.DaoException;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
-import bitcamp.java110.cms.utill.DataSource;
+import bitcamp.java110.cms.util.DataSource;
 
 @Component
-public class TeachermysqlDao implements TeacherDao {
-    
-    DataSource dataSource;
+public class TeacherMysqlDao implements TeacherDao {
 
+    DataSource dataSource;
+    
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
     public int insert(Teacher teacher) throws DaoException {
-        Statement stmt = null;
         Connection con = null;
+        Statement stmt = null;
         
         try {
             con = dataSource.getConnection();
@@ -59,7 +59,7 @@ public class TeachermysqlDao implements TeacherDao {
             return 1;
             
         } catch (Exception e) {
-            try{con.rollback();} catch (Exception e2) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
@@ -217,7 +217,7 @@ public class TeachermysqlDao implements TeacherDao {
             return 1;
             
         } catch (Exception e) {
-            try{con.rollback();} catch (Exception e2) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
@@ -225,3 +225,12 @@ public class TeachermysqlDao implements TeacherDao {
         }
     }
 }
+
+
+
+
+
+
+
+
+

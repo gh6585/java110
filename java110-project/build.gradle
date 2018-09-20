@@ -1,11 +1,7 @@
-
-
 plugins {
-
     id 'java'
     id 'eclipse-wtp'
     id 'war'
-    
 }
 
 tasks.withType(JavaCompile) {
@@ -14,16 +10,17 @@ tasks.withType(JavaCompile) {
     targetCompatibility = '1.8'
 }
 
-//프로제긑에서 사용할 라이브러리 설정
-// =>라이브러리 정보는http://mvnrepository.com/에서 검색하여 가저온다.
+// 프로젝트에서 사용할 라이브러리 설정
+// => 라이브러리 정보는 mvnrepository.com에서 검색하여 가져온다.
 dependencies {
-    //Servlet API 라이브러리
+    // Servlet API 라이브러리
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
-
-    //Spring IoC 컨테이너 관련 라이브러리
+    
+    
+    // Spring IoC 컨테이너 관련 라이브러리 
     compile group: 'org.springframework', name: 'spring-context', version: '5.0.9.RELEASE'
-
-    //mariadb jdbc driver
+    
+    // mariadb jdbc driver 
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'
     
     compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
@@ -33,6 +30,5 @@ dependencies {
 
 // 라이브러리를 다운로드 받는 서버 설정
 repositories {
-
-    mavenCentral()
+    mavenCentral() //https://repo.maven.apache.org/maven2/
 }

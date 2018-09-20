@@ -95,7 +95,7 @@ ALTER TABLE p1_att_file
 CREATE TABLE p1_stud (
     sno  INTEGER     NOT NULL COMMENT '학생번호', -- 학생번호
     schl VARCHAR(50) NOT NULL COMMENT '최종학력', -- 최종학력
-    work CHAR(1)     NOT NULL COMMENT '제직자' -- 제직자
+    work CHAR(1)     NOT NULL COMMENT '재직자' -- 재직자
 )
 COMMENT '학생';
 
@@ -271,20 +271,20 @@ ALTER TABLE p1_lect_tchr
 
 -- 수강생
 ALTER TABLE p1_lect_stud
-    ADD CONSTRAINT FK_p1_lect_TO_p1_lect_stud -- 강의 -> 수강생
-        FOREIGN KEY (
-            lno -- 강의번호
-        )
-        REFERENCES p1_lect ( -- 강의
-            lno -- 강의번호
-        );
-
--- 수강생
-ALTER TABLE p1_lect_stud
     ADD CONSTRAINT FK_p1_stud_TO_p1_lect_stud -- 학생 -> 수강생
         FOREIGN KEY (
             sno -- 학생번호
         )
         REFERENCES p1_stud ( -- 학생
             sno -- 학생번호
+        );
+
+-- 수강생
+ALTER TABLE p1_lect_stud
+    ADD CONSTRAINT FK_p1_lect_TO_p1_lect_stud -- 강의 -> 수강생
+        FOREIGN KEY (
+            lno -- 강의번호
+        )
+        REFERENCES p1_lect ( -- 강의
+            lno -- 강의번호
         );
