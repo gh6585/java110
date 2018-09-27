@@ -1,4 +1,4 @@
-/* 클라이언트가 보낸 데이터 읽기 - GET 요청으로 보낸 데이터
+/* GET/POST 구분하기 IV
  * 
  */
 package bitcamp.java110.ex05;
@@ -15,24 +15,25 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ex05/servlet04")
 public class Servlet04 extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    
     @Override
     public void doGet(
-              HttpServletRequest req
-            , HttpServletResponse res) 
-                    throws ServletException, IOException {
+            HttpServletRequest req, 
+            HttpServletResponse res) 
+            throws ServletException, IOException {
+
         // 테스트:
-        // => http://localhost:8888/ex05/text4.html
+        // => http://localhost:8888/ex05/test4.html
         
         res.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = res.getWriter();
-        
-        out.println("GET요청입니다.");
+        out.println("GET 요청입니다.");
     }
-    
-    
-
 }
+
+
+
+
 
 
 
