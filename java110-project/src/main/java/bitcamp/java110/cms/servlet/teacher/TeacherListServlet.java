@@ -15,8 +15,9 @@ import bitcamp.java110.cms.domain.Teacher;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/teacher/list")
-public class TeacherListServlet extends HttpServlet{
+public class TeacherListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
     TeacherMysqlDao teacherDao;
     
     @Override
@@ -26,9 +27,8 @@ public class TeacherListServlet extends HttpServlet{
         teacherDao.setDataSource(dataSource);
     }
 
-    
     @Override
-    public void doGet(
+    protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {

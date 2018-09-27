@@ -15,9 +15,10 @@ import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/student/list")
-public class StudentListServlet extends HttpServlet{
+public class StudentListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-StudentMysqlDao studentDao;
+  
+    StudentMysqlDao studentDao;
     
     @Override
     public void init() throws ServletException {
@@ -26,12 +27,11 @@ StudentMysqlDao studentDao;
         studentDao.setDataSource(dataSource);
     }
 
-    
     @Override
-    public void doGet(
-            HttpServletRequest request,
+    protected void doGet(
+            HttpServletRequest request, 
             HttpServletResponse response) 
-            throws ServletException,IOException {
+            throws ServletException, IOException {
         
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();

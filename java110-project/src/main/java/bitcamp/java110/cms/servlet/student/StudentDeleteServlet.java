@@ -13,9 +13,10 @@ import bitcamp.java110.cms.dao.impl.StudentMysqlDao;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/student/delete")
-public class StudentDeleteServlet extends HttpServlet{
+public class StudentDeleteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-StudentMysqlDao studentDao;
+  
+    StudentMysqlDao studentDao;
     
     @Override
     public void init() throws ServletException {
@@ -24,12 +25,13 @@ StudentMysqlDao studentDao;
         studentDao.setDataSource(dataSource);
     }
 
-    
     @Override
-    public void doGet(
-            HttpServletRequest request,
+    protected void doGet(
+            HttpServletRequest request, 
             HttpServletResponse response) 
-            throws ServletException,IOException {
+            throws ServletException, IOException {
+
+        
         int no = Integer.parseInt(request.getParameter("no"));
         
         response.setContentType("text/plain;charset=UTF-8");
@@ -40,5 +42,5 @@ StudentMysqlDao studentDao;
             out.println("번호에 해당하는 학생이 없습니다.");
         }
     }
-    
+
 }

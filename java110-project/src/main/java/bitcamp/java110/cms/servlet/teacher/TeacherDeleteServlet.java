@@ -13,8 +13,9 @@ import bitcamp.java110.cms.dao.impl.TeacherMysqlDao;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/teacher/delete")
-public class TeacherDeleteServlet extends HttpServlet{
+public class TeacherDeleteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
     TeacherMysqlDao teacherDao;
     
     @Override
@@ -24,13 +25,12 @@ public class TeacherDeleteServlet extends HttpServlet{
         teacherDao.setDataSource(dataSource);
     }
 
-    
     @Override
-    public void doGet(
+    protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {
-        
+
         int no = Integer.parseInt(request.getParameter("no"));
         
         response.setContentType("text/plain;charset=UTF-8");
@@ -41,5 +41,5 @@ public class TeacherDeleteServlet extends HttpServlet{
             out.println("번호에 해당하는 강사가 없습니다.");
         }
     }
-    
+
 }

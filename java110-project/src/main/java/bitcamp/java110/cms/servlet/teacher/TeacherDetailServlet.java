@@ -14,8 +14,9 @@ import bitcamp.java110.cms.domain.Teacher;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/teacher/detail")
-public class TeacherDetailServlet extends HttpServlet{
+public class TeacherDetailServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
     TeacherMysqlDao teacherDao;
     
     @Override
@@ -26,11 +27,11 @@ public class TeacherDetailServlet extends HttpServlet{
     }
 
     @Override
-    public void doGet(
+    protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {
-        
+
         int no = Integer.parseInt(request.getParameter("no"));
         Teacher t = teacherDao.findByNo(no);
         
@@ -48,6 +49,5 @@ public class TeacherDetailServlet extends HttpServlet{
         out.printf("시급: %d\n", t.getPay());
         out.printf("강의과목: %s\n", t.getSubjects());
     }
-    
-    }
 
+}

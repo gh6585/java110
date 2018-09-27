@@ -14,9 +14,10 @@ import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/student/detail")
-public class StudentDetailServlet extends HttpServlet{
+public class StudentDetailServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-StudentMysqlDao studentDao;
+  
+    StudentMysqlDao studentDao;
     
     @Override
     public void init() throws ServletException {
@@ -26,10 +27,11 @@ StudentMysqlDao studentDao;
     }
 
     @Override
-    public void doGet(
-            HttpServletRequest request,
+    protected void doGet(
+            HttpServletRequest request, 
             HttpServletResponse response) 
-            throws ServletException,IOException {
+            throws ServletException, IOException {
+
         
         int no = Integer.parseInt(request.getParameter("no"));
         Student student = studentDao.findByNo(no);
@@ -48,5 +50,5 @@ StudentMysqlDao studentDao;
         out.printf("전화: %s\n", student.getTel());
         out.printf("재직여부: %b\n", student.isWorking());
     }
-    
+
 }

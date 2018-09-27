@@ -14,8 +14,9 @@ import bitcamp.java110.cms.domain.Teacher;
 import bitcamp.java110.cms.util.DataSource;
 
 @WebServlet("/teacher/add")
-public class TeacherAddServlet extends HttpServlet{
+public class TeacherAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
     TeacherMysqlDao teacherDao;
     
     @Override
@@ -26,7 +27,7 @@ public class TeacherAddServlet extends HttpServlet{
     }
 
     @Override
-    public void doGet(
+    protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException {
@@ -47,5 +48,5 @@ public class TeacherAddServlet extends HttpServlet{
             out.println("같은 이메일의 강사가 존재합니다.");
         }
     }
-    
+
 }
