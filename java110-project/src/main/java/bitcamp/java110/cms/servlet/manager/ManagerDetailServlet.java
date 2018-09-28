@@ -27,7 +27,7 @@ public class ManagerDetailServlet extends HttpServlet {
         ManagerDao managerDao = (ManagerDao)this.getServletContext()
                 .getAttribute("managerDao");
         Manager m = managerDao.findByNo(no);
-
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
