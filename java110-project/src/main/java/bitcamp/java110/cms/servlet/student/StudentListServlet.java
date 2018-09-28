@@ -23,20 +23,51 @@ public class StudentListServlet extends HttpServlet {
             HttpServletResponse response) 
             throws ServletException, IOException {
         
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         StudentDao studentDao = (StudentDao)this.getServletContext()
                 .getAttribute("studentDao");
         
         List<Student> list = studentDao.findAll();
-        for (Student s : list) {
-            out.printf("%d, %s, %s, %s, %b\n",
-                    s.getNo(),
-                    s.getName(), 
-                    s.getEmail(), 
-                    s.getSchool(),
-                    s.isWorking());
+       
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title>학생 관리</title>");
+        
+        out.println("<style>");
+        out.println("table, th, td{");
+        out.println("border: 1px solid gray;");
+        out.println("}");
+        out.println("</style>");
+        
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>학생 목록</h1>");
+        
+        out.println("<p><a href='form.html'>추가</a></p>");
+        out.println("<table>");
+        out.println("<thead>");
+        out.println("<tr>");
+        out.println("<th>번호</th><th>이름</th><th>이메일</th><th>학교</th>");
+        out.println("</tr>");
+        out.println("</thead>");
+        out.println("<tbody>");
+
+
+        for (Student m : list) {
+            out.println("<tr>");
+            out.printf("<td>%d</td>",m.getNo());
+            out.printf("<td><a href='detail?no=%d'>%s</td>",m.getNo(),m.getName());
+            out.printf("<td>%s</td>",m.getEmail()); 
+            out.printf("<td>%s</td>",m.getSchool());
+            out.println("</tr>");
         }
+        out.println("<tbody>");
+        out.println("</table>");
+        out.println("</body>");
+        out.println("</html>");
     }
 }
