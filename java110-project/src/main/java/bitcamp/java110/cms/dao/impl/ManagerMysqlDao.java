@@ -215,6 +215,7 @@ public class ManagerMysqlDao implements ManagerDao {
             try {stmt.close();} catch (Exception e) {}
         }
     }
+    
     @Override
     public Manager findByEmailPassword(String email, String password) throws DaoException {
         Connection con = null;
@@ -258,6 +259,7 @@ public class ManagerMysqlDao implements ManagerDao {
             try {stmt.close();} catch (Exception e) {}
         }
     }
+    
 }
 
 

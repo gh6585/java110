@@ -219,6 +219,7 @@ public class TeacherMysqlDao implements TeacherDao {
             try {stmt.close();} catch (Exception e) {}
         }
     }
+    
     @Override
     public Teacher findByEmailPassword(String email, String password) throws DaoException {
         Connection con = null;

@@ -1,6 +1,7 @@
 /* 쿠키(cookie) - 사용 범위 지정하기
  * => 쿠키의 사용 범위를 지정하면 
- *    해당 범위에 있는 URL을 요청할 때는웹브라우저가 쿠키를 보낸다.
+ *    해당 범위에 있는 URL을 요청할 때 웹브라우저가 쿠키를 보낸다.
+ *       
  */
 package bitcamp.java110.ex10;
 
@@ -24,16 +25,16 @@ public class Servlet01_2 extends HttpServlet {
             HttpServletRequest req, 
             HttpServletResponse res) 
             throws ServletException, IOException {
-        
-        // 1) => 현재 경로에 한정
-        //       "이 쿠키는 같은 경로(/ex10/**)의 서블릿을 요청할 떄 보내달라"
-        //       라고 웹브라우저에게 지시하는 것이다.
+
+        // => 현재 경로에 한정
+        //    "이 쿠키는 같은 경로(/ex10/**)의 서블릿을 요청할 때 보내달라"
+        //    라고 웹브라우저에게 지시하는 것이다.
         Cookie c1 = new Cookie("name", "hongkildong");
         
-        // 2) => 웹 애플리케이션 전체 범위로 확장
-        //       "이 쿠키는 전체 서블릿(/**)에 대해 무족건 보내달라"
-        //       라고 웹브라우저에게 지시하는 것이다.
-        Cookie c2 = new Cookie("age","12");
+        // => 웹 애플리케이션 전체 범위로 확장
+        //    "이 쿠키는 전체 서블릿(/**)에 대해 무조건 보내달라"
+        //    라고 웹브라우저에게 지시하는 것이다.
+        Cookie c2 = new Cookie("age", "12");
         c2.setPath("/");
         
         // => 현재 경로보다 더 좁히기
@@ -49,11 +50,11 @@ public class Servlet01_2 extends HttpServlet {
         /* HTTP 응답 프로토콜 예)
 HTTP/1.1 200
 Set-Cookie: name=hongkildong
-Set-Cookie: age=12; Path=/  <== 경로 정보가 추가된다.
-Set-Cookie: working=true; Path=ex10/a/b    <=== 경로 정보가 추가된다.
+Set-Cookie: age=12; Path=/      <=== 경로 정보가 추가된다.
+Set-Cookie: working=true; Path=/ex10/a/b      <=== 경로 정보가 추가된다.
 Content-Type: text/html;charset=UTF-8
-Content-Length: 140
-Date: Mon, 01 Oct 2018 03:17:51 GMT
+Content-Length: 130
+Date: Mon, 01 Oct 2018 02:49:43 GMT         
          */
         
         res.setContentType("text/html;charset=UTF-8");
@@ -62,9 +63,8 @@ Date: Mon, 01 Oct 2018 03:17:51 GMT
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
-        
         out.println("<meta charset='UTF-8'>");
-        out.println("<title>ex09</title>");
+        out.println("<title>ex10</title>");
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>쿠키 보내기</h1>");
@@ -72,6 +72,16 @@ Date: Mon, 01 Oct 2018 03:17:51 GMT
         out.println("</html>");
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

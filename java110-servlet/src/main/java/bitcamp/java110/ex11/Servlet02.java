@@ -1,3 +1,4 @@
+// 세션 사용 전 - hidden 타입 input 필드 사용
 package bitcamp.java110.ex11;
 
 import java.io.IOException;
@@ -13,12 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 public class Servlet02 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    
     @Override
-    public void doPost(
+    protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) 
-            throws ServletException, IOException {
+                    throws ServletException, IOException {
         
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
@@ -29,14 +29,13 @@ public class Servlet02 extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
-        
         out.println("<meta charset='UTF-8'>");
         out.println("<title>non-session</title>");
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>2페이지</h1>");
         out.println("<form action='servlet03' method='post'>");
-        out.printf("<input type='hidden' name='name' value='%s'>\n",name);
+        out.printf("<input type='hidden' name='name' value='%s'>\n", name);
         out.println("나이: <input type='number' name='age'><br>");
         out.println("<button>다음</button>");
         out.println("</form>");
@@ -44,15 +43,6 @@ public class Servlet02 extends HttpServlet {
         out.println("</html>");
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 

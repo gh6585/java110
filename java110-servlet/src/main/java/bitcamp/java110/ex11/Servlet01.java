@@ -1,4 +1,4 @@
-// 세션 사용전 - hidden  타입 input 필드사용전
+// 세션 사용 전 - hidden 타입 input 필드 사용
 package bitcamp.java110.ex11;
 
 import java.io.IOException;
@@ -14,20 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 public class Servlet01 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    
     @Override
-    public void doGet(
-            HttpServletRequest req, 
-            HttpServletResponse res) 
-            throws ServletException, IOException {
+    protected void doGet(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
         
-        res.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = res.getWriter();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
-        
         out.println("<meta charset='UTF-8'>");
         out.println("<title>non-session</title>");
         out.println("</head>");
@@ -41,15 +39,6 @@ public class Servlet01 extends HttpServlet {
         out.println("</html>");
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 

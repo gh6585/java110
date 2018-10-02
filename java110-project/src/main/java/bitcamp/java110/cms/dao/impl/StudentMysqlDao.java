@@ -220,7 +220,6 @@ public class StudentMysqlDao implements StudentDao {
         }
     }
     
-    
     @Override
     public Student findByEmailPassword(String email, String password) throws DaoException {
         Connection con = null;

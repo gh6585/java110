@@ -1,17 +1,27 @@
 # java110
 
 비트캠프 **자바 110기** 실습 프로젝트
-## java110-project (tag: v4.5)
+## java110-project (tag: v4.7)
+
+- 세션 적용하기
+
+## java110-project (tag: v4.6)
+
+- 쿠키 적용하기
+
+## java110-project (tag: v4.5, v4.5.1)
 
 - 포워드, 인클루드 적용하기
 
+
 ## java110-project (tag: v4.4)
 
-- 리플래시,리다이렉트 적용하기
+- 리프래시, 리다이렉트 적용하기
 
 ## java110-project (tag: v4.3)
 
--HTML 출력하기
+- HTML 출력하기
+
 
 ## java110-project (tag: v4.2)
 

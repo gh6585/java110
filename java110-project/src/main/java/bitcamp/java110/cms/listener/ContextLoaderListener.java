@@ -10,11 +10,11 @@ import bitcamp.java110.cms.dao.impl.TeacherMysqlDao;
 import bitcamp.java110.cms.util.DataSource;
 
 //@WebListener
-public class ContextLoaderListener implements ServletContextListener{
+public class ContextLoaderListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("ContextLoaderListener.contextInitaliaed() 실행!");
-       
+        System.out.println("ContextLoaderListener.contextInitialized() 실행!");
+        
         ServletContext sc = sce.getServletContext();
 
         // DAO가 사용할 DB 커넥션풀 객체 준비

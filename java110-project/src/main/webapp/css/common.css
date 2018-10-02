@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 header {
     overflow: hidden;
     padding: 0px;
@@ -13,8 +15,11 @@ header > h1 {
     overflow: hidden;
 }
 
-li {
+header ul {
     float: right;
+}
+
+header li {
     list-style: none;
     display: inline-block;
     margin: 0px 5px;
@@ -27,5 +32,28 @@ footer {
 
 footer > p {
     padding: 10px;
-    text-align: center;
+	text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

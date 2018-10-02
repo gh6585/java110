@@ -21,17 +21,15 @@ public class TeacherDeleteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         int no = Integer.parseInt(request.getParameter("no"));
-       
-        
         
         TeacherDao teacherDao = (TeacherDao)this.getServletContext()
                 .getAttribute("teacherDao");
         
-        
-        try{
+        try {
             teacherDao.delete(no);
             response.sendRedirect("list");
-        } catch(Exception e) {
+            
+        } catch (Exception e) {
             request.setAttribute("error", e);
             request.setAttribute("message", "강사 삭제 오류!");
             request.setAttribute("refresh", "3;url=list");

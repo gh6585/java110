@@ -31,26 +31,22 @@ public class StudentListServlet extends HttpServlet {
                 .getAttribute("studentDao");
         
         List<Student> list = studentDao.findAll();
-       
+        
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
         out.println("<title>학생 관리</title>");
-        
         out.println("<link rel='stylesheet' href='../css/common.css'>");
-        
         out.println("<style>");
-        out.println("table, th, td{");
-        out.println("border: 1px solid gray;");
+        out.println("table, th, td {");
+        out.println("    border: 1px solid gray;");
         out.println("}");
         out.println("</style>");
-        
         out.println("</head>");
         out.println("<body>");
         
-        // 페이지 머릿말 포함하기
-        RequestDispatcher rd =request.getRequestDispatcher("/header");
+        RequestDispatcher rd = request.getRequestDispatcher("/header");
         rd.include(request, response);
         
         out.println("<h1>학생 목록</h1>");
@@ -59,25 +55,27 @@ public class StudentListServlet extends HttpServlet {
         out.println("<table>");
         out.println("<thead>");
         out.println("<tr>");
-        out.println("<th>번호</th><th>이름</th><th>이메일</th><th>학교</th>");
+        out.println("    <th>번호</th><th>이름</th><th>이메일</th> "
+                + "<th>최종학교</th><th>재직여부</th>");
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");
-
-
-        for (Student m : list) {
+        
+        for (Student s : list) {
             out.println("<tr>");
-            out.printf("<td>%d</td>",m.getNo());
-            out.printf("<td><a href='detail?no=%d'>%s</td>",m.getNo(),m.getName());
-            out.printf("<td>%s</td>",m.getEmail()); 
-            out.printf("<td>%s</td>",m.getSchool());
+            out.printf("    <td>%d</td>\n", s.getNo());
+            out.printf("    <td><a href='detail?no=%d'>%s</a></td>\n",
+                    s.getNo(),
+                    s.getName());
+            out.printf("    <td>%s</td>\n", s.getEmail());
+            out.printf("    <td>%s</td>\n", s.getSchool());
+            out.printf("    <td>%b</td>\n", s.isWorking());
             out.println("</tr>");
         }
-        out.println("<tbody>");
+        out.println("</tbody>");
         out.println("</table>");
         
-        // 페이지 꼬리말 포함하기
-        rd =request.getRequestDispatcher("/footer");
+        rd = request.getRequestDispatcher("/footer");
         rd.include(request, response);
         
         out.println("</body>");
