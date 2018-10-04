@@ -1,7 +1,7 @@
 // JSP 사용 전 - 로그인 폼 출력하기
 // => 개발자가 직접 HTML 출력 코드를 작성해야 한다.
-// 
-// JSP
+//
+// JSP 
 // => 개발자를 대신하여 서블릿 클래스를 정의하고,
 //    자바 출력 코드를 작성한다.
 // => 구동 원리
@@ -9,7 +9,7 @@
 //    - 생성된 자바 클래스는 HttpServlet 클래스의 하위 클래스이다.
 //    - 클래스 이름은 JSP 엔진에 따라 다를 수 있다.
 //    - JSP 파일을 직접 실행하는 것이 아니다.
-//    
+//
 package bitcamp.java110.ex12;
 
 import java.io.IOException;
@@ -44,10 +44,10 @@ public class Servlet01 extends HttpServlet {
             }
         }
         
-        if (email == "") {// email 쿠키가 없다면 ,
-            // 다음 요청할 때 이메일 쿠키를 받을 수 있도록
-            // 테스트 용 쿠키를 웹 브라우저에게 보낸다.
-            Cookie cookie = new Cookie("email","hongkildong");
+        if (email == "") { // email 쿠키가 없다면,
+            // 다음 요청할 때 이메일 쿠키를 받을 수 있도록 
+            // 테스트 용 쿠키를 웹브라우저에게 보낸다.
+            Cookie cookie = new Cookie("email", "hongkildong");
             cookie.setPath("/");
             response.addCookie(cookie);
         }
