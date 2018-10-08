@@ -20,6 +20,7 @@ th {
 
 <h1>매니저 등록(MVC)</h1>
 
+
 <form action='add' method='post'>
 <table>
 <tbody>
