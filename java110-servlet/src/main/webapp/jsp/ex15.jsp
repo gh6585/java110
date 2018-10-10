@@ -21,7 +21,9 @@
 int a = Integer.parseInt(request.getParameter("a"));
 int b = Integer.parseInt(request.getParameter("b"));
 String op = request.getParameter("op");
+
 int result = 0;
+
 switch(op) {
 case "+": result = a + b; break;
 case "-": result = a - b; break;
@@ -36,3 +38,43 @@ default:%>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

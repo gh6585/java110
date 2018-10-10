@@ -26,7 +26,18 @@ ${member.no}<br>
 ${member["no"]}<br>
 ${member['no']}<br>
 ${member.getNo()}<br>
-<%-- 보관소가 아닌 로컬 변수는 EL에서 사용할 수 없다. --%>
-${nameList[0]}<br>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
