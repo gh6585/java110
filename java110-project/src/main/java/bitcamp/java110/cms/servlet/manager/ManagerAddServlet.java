@@ -52,8 +52,9 @@ public class ManagerAddServlet extends HttpServlet {
         m.setTel(request.getParameter("tel"));
         m.setPosition(request.getParameter("position"));
         
-        ManagerService managerService = (ManagerService)
-                this.getServletContext().getAttribute("managerService");
+        ManagerService managerService = 
+                (ManagerService)this.getServletContext()
+                                    .getAttribute("managerService");
         
         try {
             // 사진 데이터 처리

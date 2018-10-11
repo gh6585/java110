@@ -19,8 +19,8 @@ public class MemberMysqlDao implements MemberDao {
 
     @Override
     public int insert(Member member) throws DaoException {
-        Statement stmt = null;
         Connection con = null;
+        Statement stmt = null;
         
         try {
             con = dataSource.getConnection();
@@ -61,9 +61,7 @@ public class MemberMysqlDao implements MemberDao {
             stmt = con.createStatement();
             
             String sql = "delete from p1_memb where mno=" + no;
-            stmt.executeUpdate(sql);
-            
-            return 1;
+            return stmt.executeUpdate(sql);
             
         } catch (Exception e) {
             throw new DaoException(e);
@@ -72,7 +70,6 @@ public class MemberMysqlDao implements MemberDao {
             try {stmt.close();} catch (Exception e) {}
         }
     }
-    
 }
 
 

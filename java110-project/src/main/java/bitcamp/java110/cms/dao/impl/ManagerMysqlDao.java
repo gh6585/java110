@@ -20,8 +20,9 @@ public class ManagerMysqlDao implements ManagerDao {
     }
 
     public int insert(Manager manager) throws DaoException {
-        Connection con = null;
         Statement stmt = null;
+        
+        Connection con = null;
         
         try {
             con = dataSource.getConnection();
@@ -175,26 +176,11 @@ public class ManagerMysqlDao implements ManagerDao {
         
         try {
             con = dataSource.getConnection();
-            
-            con.setAutoCommit(false);
             stmt = con.createStatement();
-            
             String sql = "delete from p1_mgr where mrno=" + no ;
-            int count = stmt.executeUpdate(sql);
-            
-            if (count == 0)
-                throw new Exception("일치하는 번호가 없습니다.");
-            
-            sql = "delete from p1_memb_phot where mno=" + no;
-            stmt.executeUpdate(sql);
-            
-            String sql2 = "delete from p1_memb where mno=" + no;
-            stmt.executeUpdate(sql2);
-            
-            return 1;
+            return stmt.executeUpdate(sql);
             
         } catch (Exception e) {
-            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
