@@ -32,7 +32,7 @@ public class ManagerServiceImpl implements ManagerService {
         // 매니저 등록관 관련된 업무는 Service 객체에서 처리한다.
         TransactionManager txManager = TransactionManager.getInstance();
         try {
-            txManager.starTransaction();
+            txManager.startTransaction();
             
             memberDao.insert(manager);
             managerDao.insert(manager);
@@ -62,20 +62,21 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public void delete(int no) {
         TransactionManager txManager = TransactionManager.getInstance();
-
-        try {
-            txManager.starTransaction();
-            
-        if (managerDao.delete(no) == 0) {
-            throw new RuntimeException("해당 번호의 데이터가 없습니다.");
-        }
-        photoDao.delete(no);
-        memberDao.delete(no);
         
-        txManager.commit();
-        }catch (Exception e) {
+        try {
+            txManager.startTransaction();
+            
+            if (managerDao.delete(no) == 0) {
+                throw new RuntimeException("해당 번호의 데이터가 없습니다.");
+            }
+            photoDao.delete(no);
+            memberDao.delete(no);
+            
+            txManager.commit();
+            
+        } catch (Exception e) {
             try {txManager.rollback();} catch (Exception e2) {}
-            throw new RuntimeException(e); 
+            throw new RuntimeException(e);
         }
     }
 }
