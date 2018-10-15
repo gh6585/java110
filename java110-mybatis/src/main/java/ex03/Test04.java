@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Test04 {
-
+ 
     public static void main(String[] args) throws Exception {
         
         // 1) mybatis 설정 파일 경로
@@ -28,12 +28,14 @@ public class Test04 {
         // 4) Mybatis 객체를 MemberDao에게 넘겨준다.
         memberDao.setSqlSessionFactory(sqlSessionFactory);
         
-        Member m = memberDao.findByNo(114);
+        Member m = memberDao.findByNo(84);
         
         System.out.println(m.getNo());
         System.out.println(m.getName());
-        System.out.println(m.email);
-        System.out.println(m.tel);
+        System.out.println(m.getEmail());
+        System.out.println(m.getTel());
+        
+        
     }
 
 }
