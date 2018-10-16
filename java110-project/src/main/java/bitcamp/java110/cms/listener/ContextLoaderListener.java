@@ -47,7 +47,6 @@ public class ContextLoaderListener implements ServletContextListener {
             sc.setAttribute("studentService", studentService);
             sc.setAttribute("teacherService", teacherService);
             sc.setAttribute("authService", authService);
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
