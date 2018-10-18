@@ -8,13 +8,13 @@ public class Engine {
     public Engine() {
         System.out.println("Engine() 호출됨!");
     }
-    public Engine(String maker, int valve, boolean isDisel) {
+    
+    public Engine(String maker, int valve, boolean isDiesel) {
         this.maker = maker;
         this.valve = valve;
-        this.isDiesel = isDisel;
+        this.isDiesel = isDiesel;
         System.out.println("Engine(String,int,boolean) 호출됨!");
     }
-    
     
     public String getMaker() {
         return maker;
@@ -34,6 +34,7 @@ public class Engine {
     public void setDiesel(boolean isDiesel) {
         this.isDiesel = isDiesel;
     }
+
     @Override
     public String toString() {
         return "Engine [maker=" + maker + ", valve=" + valve + ", isDiesel=" + isDiesel + "]";

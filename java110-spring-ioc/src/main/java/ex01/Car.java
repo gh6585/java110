@@ -1,13 +1,13 @@
 package ex01;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Car {
-    int no;
-    String model;
-    String maker;
-    int cc;
-    Date CreatedDate;
+    private int no;
+    private String model;
+    private String maker;
+    private int cc;
+    private Date createdDate;
     
     public Car() {
         System.out.println("Car() 호출됨!");
@@ -17,14 +17,12 @@ public class Car {
         this.model = model;
         this.cc = cc;
         System.out.println("Car(String,int) 호출됨!");
-
     }
     
-    public Car(int cc, String medel) {
-        this.model = medel;
+    public Car(int cc, String model) {
+        this.model = model;
         this.cc = cc;
         System.out.println("Car(int,String) 호출됨!");
-
     }
 
     public int getNo() {
@@ -60,18 +58,19 @@ public class Car {
     }
 
     public Date getCreatedDate() {
-        return CreatedDate;
+        return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
-        CreatedDate = createdDate;
+        this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
-        return "Car [no=" + no + ", model=" + model + ", maker=" + maker + ", cc=" + cc + ", CreatedDate=" + CreatedDate
+        return "Car [no=" + no + ", model=" + model + ", maker=" + maker + ", cc=" + cc + ", createdDate=" + createdDate
                 + "]";
     }
+    
     
     
 }

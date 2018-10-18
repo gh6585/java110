@@ -1,15 +1,14 @@
 package ex04;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Car {
-    int no;
-    String model;
-    String maker;
-    int cc;
-    Date CreatedDate;
+    private int no;
+    private String model;
+    private String maker;
+    private int cc;
+    private Date createdDate;
     private Engine engine;
-    
     
     public Car() {
         System.out.println("Car() 호출됨!");
@@ -19,7 +18,12 @@ public class Car {
         this.model = model;
         this.cc = cc;
         System.out.println("Car(String,int) 호출됨!");
-        
+    }
+    
+    public Car(int cc, String maker) {
+        this.maker = maker;
+        this.cc = cc;
+        System.out.println("Car(int,String) 호출됨!");
     }
     
     public Car(String model, int cc, Engine engine) {
@@ -27,24 +31,7 @@ public class Car {
         this.cc = cc;
         this.engine = engine;
         System.out.println("Car(String,int,Engine) 호출됨!");
-        
     }
-    
-    public Car(int cc, String maker) {
-        this.maker = maker;
-        this.cc = cc;
-        System.out.println("Car(int,String) 호출됨!");
-        
-    }
-    
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
-
 
     public int getNo() {
         return no;
@@ -79,19 +66,29 @@ public class Car {
     }
 
     public Date getCreatedDate() {
-        return CreatedDate;
+        return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
-        CreatedDate = createdDate;
+        this.createdDate = createdDate;
+    }
+    
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 
     @Override
     public String toString() {
-        return "Car [no=" + no + ", model=" + model + ", maker=" + maker + ", cc=" + cc + ", CreatedDate=" + CreatedDate
+        return "Car [no=" + no + ", model=" + model + ", maker=" + maker + ", cc=" + cc + ", createdDate=" + createdDate
                 + ", engine=" + engine + "]";
     }
 
+    
+    
     
     
 }

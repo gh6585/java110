@@ -1,9 +1,10 @@
 // 생성자 호출 : <constuctor-arg> 사용법
-// => 객체를 생성할 때 생성자의  파라미터 값을 지정하지 않으면 기본 생성자가 호출된다.
 // 
-// XML 문법 
+// XML 문법
 //      <constructor-arg><value>값</value></constructor-arg>
-//      <constructor-arg><value>값</value></constructor-arg>    
+//      <constructor-arg value="값"/>
+//
+// 
 package ex04;
 
 import org.springframework.context.ApplicationContext;
@@ -13,24 +14,23 @@ public class Test02 {
 
     public static void main(String[] args) {
         
-        // 생성자에 넘겨준 스프링 설정 파일의  경로는
-        // 자바의 classpath 경로이다.
-        ApplicationContext iocContainer =
+        ApplicationContext iocContainer = 
                 new ClassPathXmlApplicationContext("ex04/app-context-2.xml");
         
-        System.out.println("----------------------------------");
-        // 컨테이너에 들어 있는 객체의 이름 알아내기
+        System.out.println("------------------------------");
+        
+        // 컨테이너에 들어 있는 객체의 개수와 이름 알아내기
         int count = iocContainer.getBeanDefinitionCount();
         System.out.printf("bean 개수 = %d\n", count);
         
         String[] names = iocContainer.getBeanDefinitionNames();
         for (String name : names) {
-            System.out.printf("=> %s : %s\n",
-                    name,
+            System.out.printf("=> %s : %s\n", 
+                    name, 
                     iocContainer.getType(name).getName());
         }
         
-        System.out.println("----------------------------------");
+        System.out.println("------------------------------");
         
         Car c1 = (Car)iocContainer.getBean("c1");
         System.out.println(c1);
@@ -43,21 +43,10 @@ public class Test02 {
         
         Car c4 = (Car)iocContainer.getBean("c4");
         System.out.println(c4);
+        
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

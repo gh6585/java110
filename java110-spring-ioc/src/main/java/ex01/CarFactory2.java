@@ -1,12 +1,12 @@
 package ex01;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CarFactory2 {
     
     public Car create(String model) {
         Car c = new Car();
-
+        
         switch (model) {
         case "티코":
             c.setModel("Tico");
@@ -19,7 +19,7 @@ public class CarFactory2 {
             c.setCc(1980);
             c.setMaker("현대자동차");
             c.setCreatedDate(new Date(System.currentTimeMillis()));
-            break;    
+            break;
         case "그랜저":
             c.setModel("Grandeur");
             c.setCc(1980);
@@ -31,8 +31,17 @@ public class CarFactory2 {
             c.setCc(1500);
             c.setMaker("현대자동차");
             c.setCreatedDate(new Date(System.currentTimeMillis()));
-            break;
         }
         return c;
     }
 }
+
+
+
+
+
+
+
+
+
+

@@ -5,5 +5,5 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="c1" class="ex03.Car"/>
-    
+
 </beans>
