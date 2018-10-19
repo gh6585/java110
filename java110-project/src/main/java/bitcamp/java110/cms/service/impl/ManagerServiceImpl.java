@@ -3,8 +3,6 @@ package bitcamp.java110.cms.service.impl;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +15,14 @@ import bitcamp.java110.cms.service.ManagerService;
 @Service
 public class ManagerServiceImpl implements ManagerService {
 
-    @Autowired SqlSessionFactory sqlSessionFactory;
+    @Autowired ManagerDao managerDao;
+    @Autowired MemberDao memberDao;
+    @Autowired PhotoDao photoDao;
+
+
     
     @Override
     public void add(Manager manager) {
-        SqlSession session = sqlSessionFactory.openSession();
-        try {
-            MemberDao memberDao = session.getMapper(MemberDao.class);
-            ManagerDao managerDao = session.getMapper(ManagerDao.class);
-            PhotoDao photoDao = session.getMapper(PhotoDao.class);
-            
             memberDao.insert(manager);
             managerDao.insert(manager);
             
@@ -38,21 +34,11 @@ public class ManagerServiceImpl implements ManagerService {
                 
                 photoDao.insert(params);
             }
-            
-            session.commit();
-        } catch (Exception e) {
-            session.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
     }
     
     @Override
     public List<Manager> list(int pageNo, int pageSize) {
-        try (SqlSession session = sqlSessionFactory.openSession()) {
             
-            ManagerDao managerDao = session.getMapper(ManagerDao.class);
             
             HashMap<String,Object> params = new HashMap<>();
             params.put("rowNo", (pageNo - 1) * pageSize);
@@ -60,23 +46,14 @@ public class ManagerServiceImpl implements ManagerService {
             
             return managerDao.findAll(params);
         }
-    }
     
     @Override
     public Manager get(int no) {
-        try (SqlSession session = sqlSessionFactory.openSession()) {
-            ManagerDao managerDao = session.getMapper(ManagerDao.class);
             return managerDao.findByNo(no);
         }
-    }
     
     @Override
     public void delete(int no) {
-        SqlSession session = sqlSessionFactory.openSession();
-        try {
-            MemberDao memberDao = session.getMapper(MemberDao.class);
-            ManagerDao managerDao = session.getMapper(ManagerDao.class);
-            PhotoDao photoDao = session.getMapper(PhotoDao.class);
             
             if (managerDao.delete(no) == 0) {
                 throw new RuntimeException("해당 번호의 데이터가 없습니다.");
@@ -84,15 +61,8 @@ public class ManagerServiceImpl implements ManagerService {
             photoDao.delete(no);
             memberDao.delete(no);
             
-            session.commit();
-        } catch (Exception e) {
-            session.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
+        } 
     }
-}
 
 
 
