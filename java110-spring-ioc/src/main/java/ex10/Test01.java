@@ -1,19 +1,19 @@
-// 의존 객체 자동 주입 : <context:annotation-config/>
-// => AutowiredAnnotationBeanPostProcessor 를 포함하여 
-//    스프링 IoC 컨테이너에서 자주 사용하는 객체를 등록시키는 
-//    단축 명령어이다.
-//
-package ex08;
+// Java Config
+// => XML로 설정하지 않고 자버 클래스에서 애노테이션으로 설정하는 것을 말환다.
+// => 요즈 많이 사용하고 있는 SpringBoot의 기본 설정 방법이다.
+// 
+package ex10;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Test02 {
+public class Test01 {
 
     public static void main(String[] args) {
         
+        // Java Config를 사용할 때는 다음 IoC 컨테이너를  사용한다.
         ApplicationContext iocContainer = 
-                new ClassPathXmlApplicationContext("ex08/app-context-2.xml");
+                new AnnotationConfigApplicationContext(AppConfig.class);
         
         System.out.println("------------------------------");
         
@@ -33,7 +33,14 @@ public class Test02 {
         Car c1 = (Car)iocContainer.getBean("c1");
         System.out.println(c1);
         
+        Car c2 = (Car)iocContainer.getBean("getCar");
+        System.out.println(c2);
         
+        Car c3 = (Car)iocContainer.getBean("c3");
+        System.out.println(c3);
+        
+        Car c4 = (Car)iocContainer.getBean("c4");
+        System.out.println(c4);
     }
 
 }

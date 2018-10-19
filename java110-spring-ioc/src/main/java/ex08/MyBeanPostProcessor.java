@@ -10,6 +10,8 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         System.out.println("MyBeanPostProcessor.postProcessBeforeInitialization()");
         System.out.printf("==> %s\n", bean.toString());
         return bean;
+        
+        
     }
     
     @Override
