@@ -13,10 +13,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
-@ComponentScan(basePackages="bitcamp.java110.cms") //객체를 만듬
-@PropertySource("classpath:/bitcamp/java110/cms/conf/jdbc.properties")//읽어서 environment에 저장을함
+@ComponentScan(basePackages="bitcamp.java110.cms")
+@PropertySource("classpath:/bitcamp/java110/cms/conf/jdbc.properties")
 
-// Mybatis에서 자동으로 DAO를 생성할 때 사용할 인터페이스가 들어 있는 패키지 설정
+// Mybatis에서 자동으로 DAO를 생성할 때 사용할 인터페이스가 들어 있는 패키지 설정 
 @MapperScan("bitcamp.java110.cms.dao")
 public class AppConfig {
     
@@ -24,10 +24,8 @@ public class AppConfig {
     Environment env;
     
     @Bean(destroyMethod="close")
-    public DataSource datatSource() {
-        
-        
-        System.out.println("DataSrouce 객체 생성!");
+    public DataSource dataSource() {
+        System.out.println("DataSource 객체 생성!");
         
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName(env.getProperty("jdbc.driver"));
@@ -44,40 +42,36 @@ public class AppConfig {
             DataSource dataSource,
             ApplicationContext appCtx) {
         System.out.println("SqlSessionFactory 객체 생성!");
-        System.out.println(dataSource);
-        System.out.println(appCtx);
+        
         try {
             SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
             
             // DB 커넥션풀을 관리해주는 객체를 꼽는다.
-            factory.setDataSource(this.datatSource());
+            factory.setDataSource(dataSource);
             
-            // SQL 맵퍼 파일에서  도메인 객체의 별명을 사용하려면,
-            // 도메인 객체가 들어 있는 패키지를 지정해야 한다.
+            // SQL 맵퍼 파일에서 도메인 객체의 별명을 사용하려면 
+            // 도메인 객체가 들어 있는 패키지를 지정해야 한다. 
             // 그러면 Mybatis가 해당 패키지의 모든 클래스에 대해 별명을 자동으로 생성할 것이다.
             factory.setTypeAliasesPackage("bitcamp.java110.cms.domain");
             
             // SQL 맵퍼 파일 경로를 등록한다.
             factory.setMapperLocations(appCtx.getResources(
-                            "classpath:/bitcamp/java110/cms/mapper/**/*.xml"));
-                                                                //하위에 있는 .xml 다가져와
+                    "classpath:/bitcamp/java110/cms/mapper/**/*.xml"));
             
             return factory.getObject();
-            
         } catch (Exception e) {
             throw new RuntimeException(e); 
         }
     }
-    
-/* public static void main(String[] args) {
+
+/*
+    public static void main(String[] args) {
         
-        // Java Config를 사용할 때는 다음 IoC 컨테이너를  사용한다.
         ApplicationContext iocContainer = 
                 new AnnotationConfigApplicationContext(AppConfig.class);
         
         System.out.println("------------------------------");
         
-        // 컨테이너에 들어 있는 객체의 개수와 이름 알아내기
         int count = iocContainer.getBeanDefinitionCount();
         System.out.printf("bean 개수 = %d\n", count);
         
@@ -90,6 +84,31 @@ public class AppConfig {
         
         System.out.println("------------------------------");
         
-    }*/
-
+        
+        ManagerService s = 
+                (ManagerService) iocContainer.getBean(ManagerService.class);
+        System.out.println(s.list(1, 5));
+        
+        
+        Properties props = System.getProperties();
+        Set<Entry<Object,Object>> entrySet = props.entrySet();
+        for (Entry entry : entrySet) {
+            System.out.printf("%s=%s\n", entry.getKey(), entry.getValue()); 
+        }
+    } 
+*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
