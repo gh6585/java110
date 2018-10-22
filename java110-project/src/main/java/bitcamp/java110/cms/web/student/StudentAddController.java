@@ -10,25 +10,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.StudentService;
-import bitcamp.java110.cms.web.PageController;
 
-@Component("/student/add")
-public class StudentAddController implements PageController {
+@Component
+public class StudentAddController {
 
     @Autowired
     StudentService studentService;
     
-    @Override
-    public String service(
-    HttpServletRequest request, 
+    @RequestMapping("/student/add")
+    public String add(
+            HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
         
-        if(request.getMethod().equals("GET")) {
+        if (request.getMethod().equals("GET")) {
             return "/student/form.jsp";
-            
         }
-        
+
         request.setCharacterEncoding("UTF-8");
         
         Student s = new Student();
@@ -39,16 +38,17 @@ public class StudentAddController implements PageController {
         s.setSchool(request.getParameter("school"));
         s.setWorking(Boolean.parseBoolean(request.getParameter("working")));
         
-            Part part = request.getPart("file1");
-            if (part.getSize() > 0) {
-                String filename = UUID.randomUUID().toString();
-                part.write(request.getServletContext()
-                           .getRealPath("/upload/" + filename));
-                s.setPhoto(filename);
-            }
-            
-            studentService.add(s);
-            return "redirect:list";
+        Part part = request.getPart("file1");
+        if (part.getSize() > 0) {
+            String filename = UUID.randomUUID().toString();
+            part.write(request.getServletContext()
+                       .getRealPath("/upload/" + filename));
+            s.setPhoto(filename);
         }
         
+        studentService.add(s);
+        return "redirect:list";
+        
     }
+ 
+}

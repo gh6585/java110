@@ -4,6 +4,14 @@
 
 ## java110-project (tag: v6.1)
 
+- PageController 인터페이스 대신 애노테이션을 사용하여 호출 규칙을 정의
+
+## java110-project (tag: v6.2)
+
+- Page Controller를 POJO로 전환
+
+## java110-project (tag: v6.1)
+
 - Front Controller 도입
 
 ## java110-project (tag: v6.0)
