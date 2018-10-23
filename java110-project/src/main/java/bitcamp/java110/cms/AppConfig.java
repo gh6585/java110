@@ -68,7 +68,7 @@ public class AppConfig {
     }
     
     @Bean
-    public ServletContext servlestContext() {
+    public ServletContext servletContext() {
         return sc;
     }
 
