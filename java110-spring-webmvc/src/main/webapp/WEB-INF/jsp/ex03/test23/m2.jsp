@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Test15-2 페이지 컨트롤러</h1>
+<h1>Test23.m2() 테스트</h1>
 
-<h2>Car</h2>
-model: ${car.model}<br>
-maker: ${car.maker}<br>
-auto: ${car.auto}<br>
+모델: ${car.model}<br>
+제조사: ${car.maker}<br>
+오토기어: ${car.auto}<br>
+
 </body>
 </html>
