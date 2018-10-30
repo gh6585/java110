@@ -1,4 +1,4 @@
-package ex11.step1;
+package ex11.step7;
 
 import org.springframework.stereotype.Component;
 

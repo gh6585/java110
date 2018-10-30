@@ -30,7 +30,7 @@ public class TeacherController {
             @RequestParam(value="pageNo",defaultValue="1") int pageNo,
             @RequestParam(value="pageSize",defaultValue="3") int pageSize,
             Map<String,Object> map) {
-        
+
         if (pageNo < 1)
             pageNo = 1;
         
@@ -39,6 +39,7 @@ public class TeacherController {
         
         List<Teacher> list = teacherService.list(pageNo, pageSize);
         map.put("list", list);
+        
         return "/teacher/list.jsp";
     }
     
@@ -69,13 +70,13 @@ public class TeacherController {
         }
         
         teacherService.add(teacher);
+
         return "redirect:list";
-        
     }
     
     @RequestMapping("/teacher/delete")
     public String delete(int no) throws Exception {
-       
+
         teacherService.delete(no);
         return "redirect:list";
     }

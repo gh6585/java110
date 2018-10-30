@@ -39,6 +39,7 @@ public class ManagerController {
         
         List<Manager> list = managerService.list(pageNo, pageSize);
         map.put("list", list);
+        
         return "/manager/list.jsp";
     }
     

@@ -31,10 +31,9 @@ public class StudentController {
             @RequestParam(value="pageSize",defaultValue="3") int pageSize,
             Map<String,Object> map) {
 
-        
         if (pageNo < 1)
             pageNo = 1;
-        
+
         if (pageSize < 3 || pageSize > 10)
             pageSize = 3;
         
@@ -62,8 +61,6 @@ public class StudentController {
             return "/student/form.jsp";
         }
 
-        request.setCharacterEncoding("UTF-8");
-        
         Part part = request.getPart("file1");
         if (part.getSize() > 0) {
             String filename = UUID.randomUUID().toString();
@@ -72,6 +69,7 @@ public class StudentController {
         }
         
         studentService.add(student);
+        
         return "redirect:list";
         
     }
