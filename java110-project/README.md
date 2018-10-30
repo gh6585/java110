@@ -1,11 +1,62 @@
 # java110-project
 
+## v6.9
+
+- Spring WebMvC 정리
+- 작업
+    - /WEB-INF/app-servlet.xml 스프링 설정 프론트 컨트롤러 설정 파일 작성
+    - InternalResourceViewResolver로 교체
+    - /WEB-INF/web.xml에서 프론트 컨트롤러의 설정 파일 정보 지정하기
+    - JSP를 /WEB-INF/jsp/ 폴더로 옮긴다.
+    - 페이지 컨트롤러의 리턴 값을 변경한다.
+
+## v6.8
+
+- Spring 트랜잭션 적용하기
+    - 스프링 트랜잭션은 AOP 기술을 사용한다.
+- 작업
+    - 'aspectjweaver' 라이브러리를 추가한다.
+    - Spring 트랜잭션 관리자를 Java Config로 등록한다.
+    - 트랜잭션 관리자를 활성화하는 애노테이션을 Java Config에 설정한다.
+      즉 @EnableTransactionManagement 애노테이션 추가한다.
+    - 트랜잭션으로 묶어서 DB SQL을 실행해야 하는 메서드에 @Transactional 애노테이션을 붙인다.
+
+## v6.7
+
+- 기존 라이브러리를 Spring WebMVC로 교체하기
+- 작업
+    - 'spring-webmvc' 라이브러리를 추가한다.
+    - DispatcherServlet을 Spring WebMVC 클래스로 교체한다.
+    - CharacterEncodingFilter를 Spring WebMVC 클래스로 교체한다.
+    - 페이지 컨트롤러에서 사용하는 애노테이션을 Spring 애노테이션으로 교체한다.
+
+## v6.6
+
+- 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
+    - @RequestParam 애노테이션으로 클라이언트가 보낸 값 바로 받기
+- 클라이언트가 보낸 값의 한글 처리하기
+    - 필터에서 처리한다.
+- 작업
+    - @RequestParam 애노테이션 정의
+    - 프론트 컨트롤러(DispatcherServlet) 변경한다.
+    - 각 페이지 컨트롤로의 메서드도 변경한다.
+    - CharacterEncodingFilter 클래스 추가한다.
+
 ## v6.5
 
 - 요청 처리 메서드의 파라미터 값 처리를 자동화하기
-    - 프론트 컨트롤러가 페이지 컨트롤러의 메서드를 호출할 때 파라미터 정보를
+    - 프론트 컨트롤러가 페이지 컨트롤러의 메서드를 호출할 때 파라미터 정보를 분석하여 그에 맞는 값을 자동으로 전달하게 만든다.
+- 작업
+    - 프론트 컨트롤러(DispatcherServlet) 변경한다.
+    - 각 페이지 컨트롤로의 메서드도 변경한다.
 
 ## v6.4
+
+- CRUD 기능을 합쳐 한 개의 페이지 컨트롤러로 만들기
+    - CRUD를 처리하는 각 메서드의 크기가 크기 않다면 관리하기 쉽게 
+      한 개의 클래스로 통합한다.
+- 작업
+    - 매니저 관리, 학생 관리, 강사 관리, 로그인/로그아웃을 각각 한 개의 클래스로 통합한다.
 
 ## v6.3
 

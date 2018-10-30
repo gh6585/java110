@@ -2,8 +2,30 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v6.9)
+
+- Spring WebMvC 정리
+
+## java110-project (tag: v6.8)
+
+- Spring 트랜잭션 적용하기
+
+## java110-project (tag: v6.7)
+
+- 기존 라이브러리를 Spring WebMVC로 교체하기
+
+## java110-project (tag: v6.6)
+
+- 요청 처리 메서드에서 클라이언트가 보낸 값 바로 받기
+- 클라이언트가 보낸 값의 한글 처리하기
+
+## java110-project (tag: v6.5)
+
+- 요청 처리 메서드의 파라미터 값 처리를 자동화하기
+
 ## java110-project (tag: v6.4)
 
+- CRUD 기능을 합쳐 한 개의 페이지 컨트롤러로 만들기
 
 ## java110-project (tag: v6.3)
 
