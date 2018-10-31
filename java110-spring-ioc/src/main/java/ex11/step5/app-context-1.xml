@@ -23,8 +23,7 @@
             
             <!-- 필터를 끼워 넣을 메서드의 위치 정보를 설정한다. -->
             <aop:pointcut
-               expression="execution(* ex11.step5.ServiceImpl.*(..))" 
-               id="pointcut1"/>
+               expression="execution(* ex11.step5.ServiceImpl.*(..))" id="pointcut1"/>
                
                <!-- 메서드가 호출될 때 어느 지점(앞/뒤/값을 리턴한 뒤)에 넣을 것인지 설정 -->
                <aop:before method="before" pointcut-ref="pointcut1"/>

@@ -17,7 +17,7 @@ public class AppConfig {
         
         // IoC 컨테이너의 원래 타입으로 형변환 한다.
         // 왜? ApplicationContext에는 객체를 조회하는 메서드만 있다.
-        // 원래 IoC 컨테이너 클래스에는 객체를 추가하고 제거하는 메서드도 있따.
+        // 원래 IoC 컨테이너 클래스에는 객체를 추가하고 제거하는 메서드도 있다.
         //
         AnnotationConfigApplicationContext iocContainer2=
                 (AnnotationConfigApplicationContext)iocContainer;

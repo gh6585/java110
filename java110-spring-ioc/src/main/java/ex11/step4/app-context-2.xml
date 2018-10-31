@@ -24,7 +24,7 @@
                <!-- pointcut을 재사용하지 않는다면 다음과 같이 바로 설정할 수 있다. -->
                <aop:before method="advice2"
                     pointcut="execution(* ex11.step4.ServiceImpl.add*(..))"/>
-                    <aop:before method="advice1"
+               <aop:before method="advice1"
                     pointcut="execution(* ex11.step4.ServiceImpl.delete(..))"/>
         </aop:aspect>
         
