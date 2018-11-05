@@ -59,7 +59,7 @@ public class Servlet01 implements Servlet {
     public ServletConfig getServletConfig() {
         // 서블릿을 실행하다가 서블릿 정보가 필요할 때 
         // 이 메서드를 호출하여 ServletConfig 객체를 리턴 받아 사용한다.
-        // 그래서 이 메서드는 init()에서 파라미터로 받은 ServletConfig를 객체를 
+        // 그래서 이 메서드는 init()에서 파라미터로 받은76 ServletConfig를 객체를 
         // 잘 보관해 두었다가 호출될 때 리턴해야 한다.
         return this.config;
     }
@@ -89,7 +89,7 @@ public class Servlet01 implements Servlet {
         System.out.println("destroy() 호출됨.");
         
     }
-
+    
 }
 
 // 서블릿 구동 절차
